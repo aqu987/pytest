@@ -6,7 +6,7 @@ from werkzeug.utils import secure_filename
 import methods
 from textblob import TextBlob
 
-
+pytesseract.pytesseract.tesseract_cmd = '/app/.apt/usr/bin/tesseract'
 def conv(text,iplang,oplang):
     blob=TextBlob(text)
     translation=blob.translate(to=oplang)
@@ -89,4 +89,4 @@ def next():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True,host='0.0.0.0')

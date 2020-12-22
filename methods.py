@@ -14,7 +14,7 @@ from textblob import TextBlob
 
 # In[27]:
 
-pytesseract.pytesseract.tesseract_cmd = '/app/.apt/usr/bin/tesseract'
+# pytesseract.pytesseract.tesseract_cmd = '/app/.apt/usr/bin/tesseract'
 def resize_image(image,width,height):
     image=cv2.resize(image,(width,height))
     return image

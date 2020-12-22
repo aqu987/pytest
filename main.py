@@ -1,12 +1,18 @@
 import os
-from app import app
+# from app import app
 import urllib.request
 from flask import Flask, flash, request, redirect, url_for, render_template
 from werkzeug.utils import secure_filename
 import methods
 from textblob import TextBlob
 
-pytesseract.pytesseract.tesseract_cmd = '/app/.apt/usr/bin/tesseract'
+UPLOAD_FOLDER = 'static/uploads/'
+
+app = Flask(__name__)
+app.secret_key = "secret key"
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
+
 def conv(text,iplang,oplang):
     blob=TextBlob(text)
     translation=blob.translate(to=oplang)
@@ -89,4 +95,4 @@ def next():
 
 
 if __name__ == "__main__":
-    app.run(debug=True,host='0.0.0.0')
+    app.run(debug=True)
